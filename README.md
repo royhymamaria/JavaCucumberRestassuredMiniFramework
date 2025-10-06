@@ -1,0 +1,2 @@
+# PersonalizationMicroserviceFramework
+A real-time API testing framework built using Java, RestAssured, and Cucumber (BDD). The framework automates API validation by integrating BDD feature files with reusable RestAssured step definitions, promoting human-readable test scenarios and maintainable test code.
