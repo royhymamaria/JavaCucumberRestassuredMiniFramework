@@ -23,7 +23,7 @@ public class PostUserHistory {
     @Given("the user with title {string}, body {string} and userId as {int}")
     public void the_user_details_is_sent(String title,String body,int userId) throws JsonProcessingException{
         requestPaylod = UsageHistoryPayloads.validPayloadStatic(title,body,userId);
-        System.out.println("ℹ\uFE0F Info : Payload is: " + requestPaylod);
+//        System.out.println("ℹ\uFE0F Info : Payload is: " + requestPaylod);
     }
 
     @When("POST request is sent")
@@ -53,16 +53,32 @@ public class PostUserHistory {
     @Then("response status should be {int} OK")
     public void response_status_should_be_201(int statusCode) {
         response.then().statusCode(statusCode);
-        System.out.println("✅ Response status: " + response.getStatusCode());
     }
 
     @Then("the response should match the {string} , {string} and {int}")
     public void the_response_should_match_the_name_and_job_given(String title,String body,int userId) {
-        assertThat(response.jsonPath().getString("title"),equalTo(title));
-        assertThat(response.jsonPath().getString("body"),equalTo(body));
-        assertThat(response.jsonPath().getInt("userId"),equalTo(userId));
-        System.out.println("✅ Response body:\n" + response.getBody().asPrettyString());
 
+        try {
+            assertThat(response.jsonPath().getString("title"), equalTo(title));
+            assertThat(response.jsonPath().getString("body"), equalTo(body));
+            assertThat(response.jsonPath().getInt("userId"), equalTo(userId));
+            System.out.println("✅ [PASS] All response fields matched successfully!");
+
+        }catch (AssertionError e){
+            System.err.println("❌ [FAIL] Response validation failed: " + e.getMessage());
+            throw e; // Rethrow so Cucumber marks the test as failed
+        }
+        // ✅ Log full response details (fallback-friendly)
+        System.out.println("\n================= 🔵 Response Details =================");
+        try {
+            response.then().log().all(); // Best way if using Rest Assured
+        } catch (Exception ex) {
+            // Fallback manual log if log().all() fails
+            System.out.println("Status Code: " + response.getStatusCode());
+            System.out.println("Headers: " + response.getHeaders());
+            System.out.println("Body:\n" + response.getBody().asPrettyString());
+        }
+        System.out.println("========================================================\n");
     }
 
-}
+    }
