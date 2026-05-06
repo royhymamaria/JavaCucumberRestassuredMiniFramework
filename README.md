@@ -38,7 +38,8 @@ Build a framework that integrates human-readable BDD feature files with reusable
 * Utility Classes
 * Constants Class
 * DB validations
+--------------------------
+👤 About Me:
 
-👤 About Me
 Software Test Engineer with 5 years of corporate QA experience
 Open to new QA opportunities .
