@@ -13,30 +13,34 @@ I created this space to:
 This framework is intentionally designed to be generic, reusable, and expandable —
 the same principles I applied in my corporate QA role where maintainability and clarity matter.
 
-🎯 Goal
+🎯 Goal:
 Build a framework that integrates human-readable BDD feature files with reusable RestAssured
 components — enabling clean automation of API endpoints, request/response validation,
 schema assertions, reporting, and CI integration.
 
 🧱 Tech Stack
-ToolPurposeJavaCore languageRestAssuredHTTP client for API testingCucumber (BDD)Gherkin feature files, backed by JUnitMavenBuild and dependency managementLoggingRequest/response logging for debuggingReportingCucumber HTML reports
+* Java -Core language
+* RestAssured - HTTP client for API testing
+* Cucumber - (BDD)Gherkin feature files, backed by JUnit
+* Logging - Request/response logging for debugging
+* Reporting - Cucumber HTML reports
 
 🚀 Key Features
-Behavior-Driven Development (BDD)
-RestAssured Utilities
-Database Validation
+* Behavior-Driven Development (BDD)
+* RestAssured Utilities
+* Database Validation
 
 ✅ Progress Made So Far
 
-Feature Files (BDD)
-GET API Scenarios
-POST API Scenarios
-Cucumber Runners
-Step Definitions
-Hooks
-Utility Classes
-Constants Class
-DB validations
+* Feature Files (BDD)
+* GET API Scenarios
+* POST API Scenarios
+* Cucumber Runners
+* Step Definitions
+* Hooks
+* Utility Classes
+* Constants Class
+* DB validations
 
 👤 About Me
 Software Test Engineer with 5 years of corporate QA experience
