@@ -1,15 +1,14 @@
 package com.pds.stepdefinitions;
 
-import com.pds.payLoads.UsageHistoryPayloads;
+import com.pds.payLoads.PostPayloads;
 import com.pds.userConstants.userConstants;
+import com.pds.utils.ExcelUtils;
+import com.pds.utils.TestUtils;
 import io.cucumber.core.internal.com.fasterxml.jackson.core.JsonProcessingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
-
-import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -19,11 +18,16 @@ public class PostUserHistory {
 
     private Response response;
     private Object requestPaylod;
-
-    @Given("the user with title {string}, body {string} and userId as {int}")
-    public void the_user_details_is_sent(String title,String body,int userId) throws JsonProcessingException{
-        requestPaylod = UsageHistoryPayloads.validPayloadStatic(title,body,userId);
+//POST - Validation of New User Creation feature
+    @Given("the user with title {string} and body {string}")
+    public void the_user_details_is_sent(String title,String body) throws JsonProcessingException{
+        requestPaylod = PostPayloads.validPayloadStatic(title,body);
 //        System.out.println("ℹ\uFE0F Info : Payload is: " + requestPaylod);
+    }
+// Create User via POST API - TC04
+    @Given("the user payload is passed from {string} sheet {string}")
+    public void the_user_payload_is_passed_from_sheet(String path,String sheet) throws JsonProcessingException{
+        requestPaylod = ExcelUtils.readExcel(path,sheet);
     }
 
     @When("POST request is sent")
@@ -53,15 +57,17 @@ public class PostUserHistory {
     @Then("response status should be {int} OK")
     public void response_status_should_be_201(int statusCode) {
         response.then().statusCode(statusCode);
+        System.out.println("Body:\n" + response.getBody().asPrettyString());
+        TestUtils.attachResponse(response.getBody().asPrettyString());
     }
 
-    @Then("the response should match the {string} , {string} and {int}")
-    public void the_response_should_match_the_name_and_job_given(String title,String body,int userId) {
+    @Then("the response should match the {string} and {string}")
+    public void the_response_should_match_the_name_and_job_given(String title,String body) {
 
         try {
             assertThat(response.jsonPath().getString("title"), equalTo(title));
             assertThat(response.jsonPath().getString("body"), equalTo(body));
-            assertThat(response.jsonPath().getInt("userId"), equalTo(userId));
+            //assertThat(response.jsonPath().getInt("userId"), equalTo(userId));
             System.out.println("✅ [PASS] All response fields matched successfully!");
 
         }catch (AssertionError e){

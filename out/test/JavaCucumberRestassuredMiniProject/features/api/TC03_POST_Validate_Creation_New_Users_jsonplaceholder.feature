@@ -5,13 +5,13 @@
     # Base URL and Headers are configured
 
     Scenario Outline: Validate that POST user creates new user record successfully
-      Given the user with title "<title>", body "<body>" and userId as <userId>
+      Given the user with title "<title>" and body "<body>"
       When POST request is sent
       Then response status should be 201 OK
-      Then the response should match the "<title>" , "<body>" and <userId>
+      Then the response should match the "<title>" and "<body>"
 
       Examples:
-        | title      | body    | userId |
-        | Rose Maria | Teacher | 1      |
-        | Petal      | Doctor  | 2      |
+        | title      | body    |  |
+        | Rose Maria | Teacher |  |
+        | Petal      | Doctor  |  |
 

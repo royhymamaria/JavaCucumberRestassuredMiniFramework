@@ -36,6 +36,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+Thumbs.db
 
 # Logs and reports
 *.log
@@ -43,3 +44,4 @@ allure-results/
 allure-report/
 reports/
 test-output/
+cucumber-reports/

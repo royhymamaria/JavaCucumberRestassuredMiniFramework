@@ -12,7 +12,7 @@ public class HeaderUtils {
         headersGet.put("Accept","application/json");
         headersGet.put("User-Agent", "insomnia/11.6.1");
         headersGet.put("Accept-Encoding","gzip");
-        headersGet.put("x-api-key","reqres-free-v1");
+        headersGet.put("x-api-key","reqres_7aa489a96f0d404d95aac49aff402cdb");
         return headersGet;
     }
     // Set default POST headers

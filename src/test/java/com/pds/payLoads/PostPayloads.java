@@ -1,20 +1,20 @@
 package com.pds.payLoads;
 
+import com.pds.utils.TestUtils;
 import io.cucumber.core.internal.com.fasterxml.jackson.core.JsonProcessingException;
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.UUID;
 
-public class UsageHistoryPayloads {
+public class PostPayloads {
 
-    public static Object validPayloadStatic(String title, String body, int userId) throws JsonProcessingException {
+    public static Object validPayloadStatic(String title, String body) throws JsonProcessingException {
         Map<String, Object>  payLoad = new HashMap<String, Object>();
         payLoad.put("title", title);
         payLoad.put("body", body);
-        payLoad.put("userId", userId);
+        payLoad.put("userId", TestUtils.generateRandomInt());
 //        return payLoad;
 
         ObjectMapper mapper = new ObjectMapper();

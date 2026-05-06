@@ -9,12 +9,13 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = { "com.pds.stepdefinitions"},
-        plugin = {
-                "pretty",
-                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
-        },
         monochrome = true,
-        tags = "@get or @post"  // this will skip all scenarios tagged with @ignore
+        tags = "@get or @post",  // this will skip all scenarios tagged with @ignore
+        plugin = {
+        "pretty",
+        "json:target/cucumber-json/cucumber.json",// json: path is what ReportBuilder from cucumber-reporting library will read.
+        "html:target/cucumber-html-report"
+        }
 )
 public class TestRunner {
 }
