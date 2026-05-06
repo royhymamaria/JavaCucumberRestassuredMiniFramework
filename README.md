@@ -1,22 +1,19 @@
-API Test Automation Framework
+**API Test Automation Framework**
 Java · RestAssured · Cucumber · Maven
+---------------------------------------
+A BDD-style API test automation framework built as part of my QA portfolio reflecting 5 years of corporate testing experience and continuous self-learning.
+------------------------------
+👋 About This Project
 
-A BDD-style API test automation framework built as part of my QA portfolio —
-reflecting 5 years of corporate testing experience and continuous self-learning.
-
-About This Project
 I created this space to:
 
 * Showcase my QA skills in a practical, hands-on way
 * Document my learning journey as I grow
 
-This framework is intentionally designed to be generic, reusable, and expandable —
-the same principles I applied in my corporate QA role where maintainability and clarity matter.
+This framework is intentionally designed to be generic, reusable, and expandable the same principles I applied in my corporate QA role where maintainability and clarity matter.
 
 🎯 Goal:
-Build a framework that integrates human-readable BDD feature files with reusable RestAssured
-components — enabling clean automation of API endpoints, request/response validation,
-schema assertions, reporting, and CI integration.
+Build a framework that integrates human-readable BDD feature files with reusable RestAssured components — enabling clean automation of API endpoints, request/response validation,schema assertions, reporting, and CI integration.
 
 🧱 Tech Stack
 * Java -Core language
