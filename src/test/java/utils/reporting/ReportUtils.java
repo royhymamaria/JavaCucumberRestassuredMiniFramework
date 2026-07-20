@@ -1,4 +1,4 @@
-package com.pds.utils;
+package utils.reporting;
 
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
@@ -22,6 +22,11 @@ public class ReportUtils {
     public static void generateReport(String cucumberJsonDir){
         try {
             File jsonDir = new File(cucumberJsonDir);
+            if (!jsonDir.exists() || !jsonDir.isDirectory()) {
+                System.out.println("⚠️ Cucumber JSON directory not found: " + jsonDir.getAbsolutePath());
+                return;
+            }
+
             // 1️⃣ Collect all JSON files
             Collection<File> jsonFiles = FileUtils.listFiles(
                     jsonDir,
@@ -32,14 +37,16 @@ public class ReportUtils {
                 System.out.println("⚠️ No Cucumber JSON files found. Skipping report generation.");
                 return;
             }
-        // ReportBuilder does NOT accept File objects. It expects file paths as Strings
+            // ReportBuilder does NOT accept File objects. It expects file paths as Strings
             List<String> jsonPaths = new ArrayList<>();
             jsonFiles.forEach(file -> jsonPaths.add(file.getAbsolutePath()));
             System.out.println("JSON files found: " + jsonFiles.size());
             jsonFiles.forEach(f -> System.out.println(f.getAbsolutePath()));
 
             // 2️⃣ Configure report
-            Configuration config = new Configuration(new File("target/cucumber-reports"), "MyAPIAutomation");
+            File outputDir = new File("target/cucumber-reports");
+            outputDir.mkdirs();
+            Configuration config = new Configuration(outputDir, "MyAPIAutomation");
             config.setBuildNumber("1.0.0"); // optional
             config.addClassifications("Environment", "QA"); // optional
 
@@ -49,7 +56,7 @@ public class ReportUtils {
 
             // ✅ PRINT REPORT LINK
             String reportPath = new File(
-                    "target/cucumber-reports/cucumber-html-reports/overview-features.html"
+                    outputDir, "cucumber-html-reports/overview-features.html"
             ).getAbsolutePath();
 
             System.out.println("\n===============================================");

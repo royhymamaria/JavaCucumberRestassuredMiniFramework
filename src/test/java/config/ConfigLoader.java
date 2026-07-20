@@ -1,6 +1,6 @@
-package com.pds.utils;
+package config;
 
-import java.io.IOException;
+// java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.logging.Logger;

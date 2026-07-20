@@ -1,19 +1,20 @@
-package com.pds.utils;
+package utils.common;
 
 import java.util.Map;
 import java.util.List;
 import java.util.Random;
-import io.qameta.allure.Attachment;
 
-import static com.pds.utils.ConfigLoader.getConfig;
-import static java.lang.Math.random;
+import database.DBUtils;
+
+// import static config.ConfigLoader.getConfig;
+// import static java.lang.Math.random;
 
 public class TestUtils {
     // code to generate Random Data
     // -?Math.random() returns a double between 0.0 and 1.0
 
     public static final Random random = new Random();
-    private static DBUtils dbUtils;
+    // private static DBUtils dbUtils;
 
     public static int generateRandomInt() {
         return random.nextInt(1000);
@@ -48,8 +49,8 @@ public class TestUtils {
 //    }
 
     // allure attachment utility
-    @Attachment(value = "API Response", type = "application/json")
-    public static String attachResponse(String response) {
-        return response;
-    }
+    // @Attachment(value = "API Response", type = "application/json")
+    // public static String attachResponse(String response) {
+    //     return response;
+    // }
 }

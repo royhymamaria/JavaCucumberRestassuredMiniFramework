@@ -1,4 +1,6 @@
-package com.pds.utils;
+package database;
+
+import config.ConfigLoader;
 
 public class DBConfig {
 

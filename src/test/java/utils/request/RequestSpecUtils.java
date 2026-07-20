@@ -1,11 +1,11 @@
-package com.pds.utils;
+package utils.request;
 
-import com.pds.userConstants.userConstants;
+import constants.userConstants;
 import io.restassured.builder.RequestSpecBuilder;
 
 public class RequestSpecUtils {
 
-    public static void getRequestSpecForGet(){
+    public static void getRequestSpecForGetMethod(){
         // Build a default request specification for GET
         userConstants.REQUEST_CONFIGS_GET = new RequestSpecBuilder()
                 .setBaseUri(userConstants.GET_USERS_BASEURI)
@@ -14,7 +14,7 @@ public class RequestSpecUtils {
                 .build();
     }
 
-    public static void getRequestSpecForPost(){
+    public static void getRequestSpecForPostMethod(){
         // Build a default request specification for POST
         userConstants.REQUEST_CONFIGS_POST = new RequestSpecBuilder()
                 .setBaseUri(userConstants.POST_USERS_BASEURI)

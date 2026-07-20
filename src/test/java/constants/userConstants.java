@@ -1,6 +1,6 @@
-package com.pds.userConstants;
+package constants;
 
-import com.pds.utils.ConfigLoader;
+import config.ConfigLoader;
 import io.restassured.specification.RequestSpecification;
 
 public class userConstants {

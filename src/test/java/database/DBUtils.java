@@ -1,4 +1,4 @@
-package com.pds.utils;
+package database;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;

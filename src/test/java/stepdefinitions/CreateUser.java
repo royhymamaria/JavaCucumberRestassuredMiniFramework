@@ -1,30 +1,35 @@
-package com.pds.stepdefinitions;
+package stepdefinitions;
 
-import com.pds.payLoads.PostPayloads;
-import com.pds.userConstants.userConstants;
-import com.pds.utils.ExcelUtils;
-import com.pds.utils.TestUtils;
+import constants.userConstants;
 import io.cucumber.core.internal.com.fasterxml.jackson.core.JsonProcessingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
+import payload.PostPayloads;
+//src/test/resources/payload
+// import utils.common.TestUtils;
+import utils.file.ExcelUtils;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class PostUserHistory {
+public class CreateUser {
 
     private Response response;
     private Object requestPaylod;
 //POST - Validation of New User Creation feature
     @Given("the user with title {string} and body {string}")
     public void the_user_details_is_sent(String title,String body) throws JsonProcessingException{
-        requestPaylod = PostPayloads.validPayloadStatic(title,body);
+        try {
+            requestPaylod = PostPayloads.validPayloadStatic(title,body);
+        } catch (com.fasterxml.jackson.core.JsonProcessingException e) {
+            e.printStackTrace();
+        }
 //        System.out.println("ℹ\uFE0F Info : Payload is: " + requestPaylod);
     }
-// Create User via POST API - TC04
+// Create User via POST API - TC03
     @Given("the user payload is passed from {string} sheet {string}")
     public void the_user_payload_is_passed_from_sheet(String path,String sheet) throws JsonProcessingException{
         requestPaylod = ExcelUtils.readExcel(path,sheet);
@@ -58,7 +63,7 @@ public class PostUserHistory {
     public void response_status_should_be_201(int statusCode) {
         response.then().statusCode(statusCode);
         System.out.println("Body:\n" + response.getBody().asPrettyString());
-        TestUtils.attachResponse(response.getBody().asPrettyString());
+        // TestUtils.attachResponse(response.getBody().asPrettyString());
     }
 
     @Then("the response should match the {string} and {string}")

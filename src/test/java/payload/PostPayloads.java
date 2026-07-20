@@ -1,12 +1,16 @@
-package com.pds.payLoads;
+package payload;
 
-import com.pds.utils.TestUtils;
-import io.cucumber.core.internal.com.fasterxml.jackson.core.JsonProcessingException;
-import io.cucumber.core.internal.com.fasterxml.jackson.databind.ObjectMapper;
+// import io.cucumber.core.internal.com.fasterxml.jackson.core.JsonProcessingException;
+// import io.cucumber.core.internal.com.fasterxml.jackson.databind.ObjectMapper;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+
+import utils.common.TestUtils;
 
 public class PostPayloads {
 
@@ -27,7 +31,7 @@ public class PostPayloads {
         payLoad.put("job", job);
         return payLoad;
     }
-    public static Map<String, String> invalidPayloadt() {
+    public static Map<String, String> invalidPayload() {
         Map<String, String> payload = new HashMap<>();
         payload.put("invalidKey", "value");
         return payload;
