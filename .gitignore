@@ -45,3 +45,7 @@ allure-report/
 reports/
 test-output/
 cucumber-reports/
+
+# Ignore SSH keys
+y
+y.pub
